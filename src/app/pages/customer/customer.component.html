@@ -1,30 +1,74 @@
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-12">
     <div class="card ">
       <div class="card-header ">
         Customer List
       </div>
       <div class="card-body ">
-          <input type="text" class="form-control" placeholder="Select Customer">
+        <div class="form-group">
+          <label>Customer</label>
+          <select #store_name class="form-control">
+            <option disabled selected>Select Customer</option>
+            <option>7303354421</option>
+            <option>9892161990</option>
+            <option>9699651463</option>
+          </select>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-md-6">
-    <div class="card">
-      <div class="card-header ">
-        Average Store Time
+</div>
+<div class="row">
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <i class="nc-icon nc-single-02 text-warning"></i>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Number of People Entered</p>
+              <p class="card-title">8
+                <p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="card-body">
-        
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header ">
-        Number of Visits
-      </div>
-      <div class="card-body">
-
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-refresh"></i> Update Now
+        </div>
       </div>
     </div>
   </div>
-</div>  
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <i class="nc-icon nc-user-run text-success"></i>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Number of People Left</p>
+              <p class="card-title">1
+                <p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-refresh"></i> Update Now
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>

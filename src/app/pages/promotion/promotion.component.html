@@ -1,10 +1,26 @@
 <div class="col-md-6">
   <div class="card ">
     <div class="card-header ">
-      Banner Upload
-    </div>
-    <div class="card-body ">
-        <input type="text" class="form-control" placeholder="Select Store">
-    </div>
+      <div class="form-group ">
+        <label>Select Store</label>
+        <select #store_name class="form-control">
+          <option disabled selected>Select Store Name</option>
+          <option>Pantaloons-Delhi</option>
+          <option>Pantaloons-Mumbai</option>
+          <option>Pantaloons-Chennai</option>
+          <option>Pantaloons-Kolkata</option>
+        </select>
+      </div>
+        <div class="form-group">
+          <label>Banner Upload</label>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputGroupFile01"
+              aria-describedby="inputGroupFileAddon01">
+            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+          </div>
+          <button type="button" (click)="Submit(store_name.value,store_limit.value,store_status.value)"
+            class="btn btn-primary">Submit</button>
+        </div>
+      </div>
   </div>
-</div>  
+</div>

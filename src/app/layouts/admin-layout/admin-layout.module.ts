@@ -7,6 +7,7 @@ import { AdminLayoutRoutes } from './admin-layout.routing';
 
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 import { QueueComponent } from '../../pages/queue/queue.component';
+import { QueuesComponent } from '../../pages/queues/queues.component';
 import { PromotionComponent } from '../../pages/promotion/promotion.component';
 import { CustomerComponent } from '../../pages/customer/customer.component';
 import { FeedbackComponent } from '../../pages/feedback/feedback.component';
@@ -25,7 +26,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     QueueComponent,
     PromotionComponent,
     CustomerComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    QueuesComponent
   ]
 })
 
