@@ -7,6 +7,11 @@ import { NavbarModule} from './shared/navbar/navbar.module';
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routing';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database/public_api';
+import { AngularFirestoreModule } from '@angular/fire/firestore/public_api';
+import { AngularFireAuthModule } from '@angular/fire/auth/public_api';
+import { AngularFirestore } from '@angular/fire/firestore/firestore';
 
 
 @NgModule({
@@ -22,8 +27,12 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
     SidebarModule,
     NavbarModule,
     ToastrModule.forRoot(),
+    // AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
+    AngularFireAuthModule,
   ],
-  providers: [],
+  providers: [AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

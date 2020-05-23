@@ -1,124 +1,101 @@
-<div class="row">
-    <div class="col-md-12">
-        <div class="card ">
-            <div class="card-header ">
-                Select Store
-            </div>
-            <div class="card-body ">
-                <select #store_name class="form-control">
-                    <option disabled selected>Select Store Name</option>
-                    <option>Pantaloons-Delhi</option>
-                    <option>Pantaloons-Mumbai</option>
-                    <option>Pantaloons-Chennai</option>
-                    <option>Pantaloons-Kolkata</option>
-                </select>
-            </div>
-        </div>
+  <div class="row">
+  <div class="col-6">
+  <table class="table table-hover">
+    <thead>
+      <th>Store Name</th>
+      <th>Customer Limit</th>
+      <th>Covoid Free Status</th>
+      <th>Action</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of list">
+        <td (click)="onEdit(emp)">{{emp.StoreName}}</td>
+        <td (click)="onEdit(emp)">{{emp.customerLimit}}</td>
+        <td (click)="onEdit(emp)">{{emp.covoidFreeStatus}}</td>
+        <td><a class="btn text-danger" (click)="onDelete(emp.id)"><i class="fa fa-trash"></i></a></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  
+  <div class="col-6">
+  <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+    <input type="hidden" name="id" #id="ngModel" [(ngModel)]="storeDetails.id">
+    <div class="form-group">
+      <input name="StoreName" #StoreName="ngModel" ngModel [(ngModel)]="storeDetails.StoreName" class="form-control" placeholder="Store Name" disabled required>
+      <div *ngIf="StoreName.invalid && StoreName.touched" class="validation-error">This field is required.</div>
     </div>
+    <div class="form-group">
+      <input name="customerLimit" #customerLimit="ngModel" ngModel [(ngModel)]="storeDetails.customerLimit" class="form-control" placeholder="customerLimit">
+    </div>
+    <div class="form-group">
+      <label>COVID-19 Status</label>
+      <select name="covoidFreeStatus" #covoidFreeStatus="ngModel" ngModel [(ngModel)]="storeDetails.covoidFreeStatus" class="form-control">
+        <option disabled selected>Select COVID-19 status</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-info">SUBMIT</button>
+    </div>
+  
+  </form>
+  <!-- {{storeDetails.storeLogo}} -->
+  <img [src]="storeLogo" width="30%">
+  </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <mat-card>
     <div class="row">
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-                <div class="card-body ">
-                    <div class="row">
-                        <div class="col-5 col-md-4">
-                            <div class="icon-big text-center icon-warning">
-                                <i class="nc-icon nc-time-alarm text-warning"></i>
-                            </div>
-                        </div>
-                        <div class="col-7 col-md-8">
-                            <div class="numbers">
-                                <p class="card-category">Average Waiting Time</p>
-                                <p class="card-title">32 mins
-                                <p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer ">
-                    <hr>
-                    <div class="stats">
-                        <i class="fa fa-refresh"></i> Update Now
-                    </div>
-                </div>
-            </div>
+      <div class="col-6">
+    <form>
+      <div class="col-md-6">
+        <div [formGroup]="adminStoreLogo">
+          <input type="checkbox" [value]="list" formControlName="selectAll"
+            (change)="selectAllCheckBox($event)">SelectAll
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-                <div class="card-body ">
-                    <div class="row">
-                        <div class="col-5 col-md-4">
-                            <div class="icon-big text-center icon-warning">
-                                <i class="nc-icon nc-time-alarm text-success"></i>
-                            </div>
-                        </div>
-                        <div class="col-7 col-md-8">
-                            <div class="numbers">
-                                <p class="card-category">Average in Store Duration</p>
-                                <p class="card-sub-title">49 mins
-                                <p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer ">
-                    <hr>
-                    <div class="stats">
-                        <i class="fa fa-refresh"></i> Update Now
-                    </div>
-                </div>
-            </div>
+        <div *ngFor="let a of list" [formGroup]="adminStoreLogo">
+  
+          <input type="checkbox" value={{a.id}} [checked]="a.checked" (change)="idChange($event)"
+            formControlName="storeName">{{a.StoreName}}
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-                <div class="card-body ">
-                    <div class="row">
-                        <div class="col-5 col-md-4">
-                            <div class="icon-big text-center icon-warning">
-                                <i class="nc-icon nc-user-run text-danger"></i>
-                            </div>
-                        </div>
-                        <div class="col-7 col-md-8">
-                            <div class="numbers">
-                                <p class="card-category">Number of People Left</p>
-                                <p class="card-title">1
-                                <p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer ">
-                    <hr>
-                    <div class="stats">
-                        <i class="fa fa-refresh"></i> Update Now
-                    </div>
-                </div>
-            </div>
+        <div class="col-md-6" [formGroup]="adminStoreLogo">
+          <div class="text-center">
+  
+            <img [src]="imgSrc" accept="image/*" class="shoplogoimg" (click)="fileUploader.click()">
+          </div>
+          <div class="form-group" [formGroup]="adminStoreLogo">
+            Select Shop Logo Here : <input type="file" #fileUploader class="form-control shop-name"
+              formControlName="storeLogo" (change)="showPreview($event)">
+          </div>
+  
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-                <div class="card-body ">
-                    <div class="row">
-                        <div class="col-5 col-md-4">
-                            <div class="icon-big text-center icon-warning">
-                                <i class="nc-icon nc-single-02 text-primary"></i>
-                            </div>
-                        </div>
-                        <div class="col-7 col-md-8">
-                            <div class="numbers">
-                                <p class="card-category">Number people entered Store</p>
-                                <p class="card-title">13
-                                <p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer ">
-                    <hr>
-                    <div class="stats">
-                        <i class="fa fa-refresh"></i> Update now
-                    </div>
-                </div>
-            </div>
+        <button class="btn btn-success" (click)="addLogo()">Add Logo</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-6">
+      <form>
+        <div class="col-md-6">
+          <div [formGroup]="adminStoreCustomerLimit">
+            <input type="checkbox" [value]="customerListLimitList" formControlName="selectAllCustomerLimit"
+              (change)="selectAllCustomerLimitCheckBox($event)">SelectAll
+          </div>
+          <div *ngFor="let a of customerListLimitList" [formGroup]="adminStoreCustomerLimit">
+    
+            <input type="checkbox" value={{a.id}} [checked]="a.checked" (change)="idCustomerLimitChange($event)"
+              formControlName="storeNameCustomerLimit">{{a.StoreName}}
+          </div>
         </div>
+        <div class="form-group" [formGroup]="adminStoreCustomerLimit">
+          <label>Set Customer Limit Here</label>
+          <input name="customerLimit" formControlName="customerLimitForAllStore" class="form-control" placeholder="customerLimit">
+        </div>
+        <button class="btn btn-success" (click)="addCustomerLimit()">Add Logo</button>
+      </form>
     </div>
-</div>
+  </div>
+  </mat-card>

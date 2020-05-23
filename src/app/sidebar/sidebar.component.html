@@ -1,10 +1,48 @@
 <div class="sidebar-wrapper">
     <ul class="nav">
-        <li *ngFor="let menuItem of menuItems" routerLinkActive="active" class="{{menuItem.class}}">
-            <a [routerLink]="[menuItem.path]">
-                <i class="nc-icon {{menuItem.icon}}"></i>
-                <p>{{menuItem.title}}</p>
+        
+        <li  data-toggle="collapse"  routerLinkActive="active" class="collapsed">
+            <a [routerLink]="'/dashboard'">
+                <i class="nc-icon nc-bank"></i>
+                <p>Dashboard</p>
             </a>
         </li>
+        <li  data-toggle="collapse"  routerLinkActive="active" class="collapsed">
+            <a [routerLink]="'/promotion'">
+                <i class="nc-icon nc-world-2"></i>
+                <p>Promotions</p>
+            </a>
+        </li>
+        <li  data-toggle="collapse" data-target="#Customer" routerLinkActive="active" class="collapsed">
+            <a>
+                <i class="nc-icon nc-single-02"></i>
+                <p>Customer</p>
+            </a>
+        </li>
+        <ul class="sub-menu collapse" id="Customer">
+            <li routerLinkActive="active"><a [routerLink]="'/customer'">Management</a></li>
+            <li routerLinkActive="active"><a [routerLink]="'/customer'">Settings </a></li>
+        </ul>
+    
+        <li  data-toggle="collapse" data-target="#Feedback" routerLinkActive="active" class="collapsed">
+            <a>
+                <i class="nc-icon nc-support-17"></i>
+                <p>Feedback</p>
+            </a>
+        </li>
+        <ul class="sub-menu collapse" id="Feedback">
+            <li routerLinkActive="active"><a [routerLink]="'/feedback'">Dashboard</a></li>
+            <li routerLinkActive="active"><a [routerLink]="'/feedback'">Feedback Form</a></li>
+            <li routerLinkActive="active"><a [routerLink]="'/feedback'">Responses</a></li>
+        </ul>
+        <li data-toggle="collapse" data-target="#Queue"  routerLinkActive="active" class="collapsed">
+            <a><i class="nc-icon  nc-circle-10"></i>Queue</a>
+        </li>
+          <ul class="sub-menu collapse" id="Queue">
+              <li routerLinkActive="active"><a [routerLink]="'/queues'">Management</a></li>
+              <li routerLinkActive="active"><a [routerLink]="'/queues'">Settings </a></li>
+          </ul>
+      
     </ul>
+    
 </div>

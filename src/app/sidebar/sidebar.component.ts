@@ -6,6 +6,7 @@ export interface RouteInfo {
     title: string;
     icon: string;
     class: string;
+    target?:string
 }
 
 export const ROUTES: RouteInfo[] = [
@@ -14,7 +15,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/customer',      title: 'Customer',          icon:'nc-single-02',      class: '' },
     { path: '/feedback',      title: 'Feedback',          icon:'nc-support-17',     class: '' },
     { path: '/queue',         title: 'Queue Settings',    icon:'nc-circle-10',      class: '',},
-    { path: '/queues',        title: 'Queue Management',  icon:'nc-circle-10',      class: '',}
+    { path: '/queues',        title: 'Queue Management',  icon:'nc-circle-10',      class: '', target:'#prod'}
 ];
 
 @Component({

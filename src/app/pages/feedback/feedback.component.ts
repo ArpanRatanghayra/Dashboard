@@ -1,13 +1,18 @@
-import { Component } from '@angular/core';
-import { ToastrService } from "ngx-toastr";
+import { Component, OnInit } from '@angular/core';
 
+
+interface d {
+  question: string;
+  value: number;
+  count: number
+}
 
 @Component({
-    selector: 'feedback-cmp',
+    selector: 'queue-cmp',
     moduleId: module.id,
     templateUrl: 'feedback.component.html'
 })
 
 export class FeedbackComponent{
-  
+      
 }
